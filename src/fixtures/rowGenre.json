@@ -1,0 +1,22 @@
+[
+  {
+    "id" : 1,
+    "title" : "Netflix Originals",
+    "request" : "request.fetchNetflixOriginals"
+  },
+  {
+    "id" : 2,
+    "title" : "Top Rated",
+    "request" : "requests.fetchTopRated"
+  },
+  {
+    "id" : 3,
+    "title" : "Comedy Movies",
+    "request" : "requests.fetchComedyMovies"
+  },
+  {
+    "id" : 4,
+    "title" : "Documentaries",
+    "request" : "requests.fetchDocumentaries"
+  }
+]

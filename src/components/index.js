@@ -1,0 +1,9 @@
+export { default as MainItems } from './MainItems/MainItems';
+export { default as Accordion } from './Accordion/Accordion';
+export { default as Footer } from './Footer/Footer';
+export { default as Header } from './Header/Header';
+export { default as OptForm } from './opt-form/opt-form'
+export { default as Feature } from './Feature/Feature'
+export { default as Banner } from './banner/Banner'
+export { default as Row } from './Row/Row';
+export { default as SearchItems } from './SearchItems/SearchItems'
