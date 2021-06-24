@@ -7,10 +7,14 @@ import moviesRowRecommendedReducer from "./reducers/moviesRowRecommendedReducer"
 import movieTargetReducer from "./reducers/movieTargetReducer";
 
 let reducers = combineReducers({
-  movieNetflixOriginal: movieNetflixOriginalReducer,
-  moviesRow: moviesRowReducer,
-  moviesRowRecommended: moviesRowRecommendedReducer,
-  movieTarget: movieTargetReducer
+  movies: combineReducers({
+    movieNetflixOriginal: movieNetflixOriginalReducer,
+    moviesRow: moviesRowReducer,
+    moviesRowRecommended: moviesRowRecommendedReducer,
+    movieTarget: movieTargetReducer
+  })
+  // auth: combineReducers({})
+
 })
 
 let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleware)));

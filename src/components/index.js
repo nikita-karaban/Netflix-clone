@@ -7,3 +7,6 @@ export { default as Feature } from './Feature/Feature'
 export { default as Banner } from './banner/Banner'
 export { default as Row } from './Row/Row';
 export { default as SearchItems } from './SearchItems/SearchItems'
+export { default as AuthForm } from './auth-form/Auth-form'
+export { default as SignInForm } from './auth-form/SignInForm'
+export { default as SignUpForm } from './auth-form/SignUpForm'

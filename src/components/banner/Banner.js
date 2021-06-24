@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "../../api/api";
-import requests, {fetchMovieTrailer} from "../../Requests";
+import {fetchMovieTrailer} from "../../Requests";
 import ModalVideo from 'react-modal-video';
 import {Button, Container, Contents, Description, ModalVideoWrapper, Title} from "./style";
 

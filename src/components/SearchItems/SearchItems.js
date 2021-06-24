@@ -17,6 +17,7 @@ function SearchItems({movies, history}) {
           console.log(movieRows)
         }
       }
+    fetchData()
     }
   )
 

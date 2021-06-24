@@ -1,6 +1,6 @@
 import {FETCH_NETFLIX_ORIGINALS} from "../actions/actionsType";
 
-export default function (state = {}, action) {
+export default function foo(state = {}, action) {
   switch (action.type) {
     case FETCH_NETFLIX_ORIGINALS:
       // console.log(action.payload)

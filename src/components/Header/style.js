@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import { Link as ReachRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
   display: flex;
@@ -47,25 +46,25 @@ export const Avatar = styled.img`
   cursor: pointer;
 `;
 
-export const ButtonLink = styled(ReachRouterLink)`
-display: block;
-background-color: #e50914;
-width: 84px;
-height: fit-content;
-color: white;
-border: 0;
-font-size: 15px;
-border-radius: 3px;
-padding: 8px 17px;
-cursor: pointer;
-text-decoration: none;
-box-sizing: border-box;
-
-&:hover
-{
-  background-color: #f40612;
-}
-`;
+// export const ButtonLink = styled(ReachRouterLink)`
+// display: block;
+// background-color: #e50914;
+// width: 84px;
+// height: fit-content;
+// color: white;
+// border: 0;
+// font-size: 15px;
+// border-radius: 3px;
+// padding: 8px 17px;
+// cursor: pointer;
+// text-decoration: none;
+// box-sizing: border-box;
+//
+// &:hover
+// {
+//   background-color: #f40612;
+// }
+// `;
 
 export const Background = styled.div`
   position: relative;

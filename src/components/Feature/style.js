@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   //border-bottom: 8px solid #222;
   text-align: center;
-  padding: 100px 45px;
+  padding: 25vh 45px;
 `;
 export const Title = styled.h2`
   color: white;
