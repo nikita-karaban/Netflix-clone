@@ -9,6 +9,15 @@ export const movieAPI = {
   getNetflixMovieOriginalsMovie() {
     return instance.get(requests.fetchNetflixOriginals)
   },
+  getTopRated() {
+    return instance.get(requests.fetchTopRated)
+  },
+  getComedy() {
+    return instance.get(requests.fetchComedyMovies)
+  },
+  getDocumentaries() {
+    return instance.get(requests.fetchDocumentaries)
+  },
   getMovies(fetchURL) {
     return instance.get(fetchURL)
   },

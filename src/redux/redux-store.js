@@ -5,13 +5,20 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import moviesRowReducer from "./reducers/moviesRowReducer";
 import moviesRowRecommendedReducer from "./reducers/moviesRowRecommendedReducer";
 import movieTargetReducer from "./reducers/movieTargetReducer";
+import moviesRowTopRatedReducer from "./reducers/moviesRowTopRatedReducer"
+import moviesRowComedyReducer from "./reducers/moviesRowComedyReducer"
+import moviesRowDocumentariesReducer from "./reducers/moviesRowDocumentariesReducer"
 
 let reducers = combineReducers({
   movies: combineReducers({
     movieNetflixOriginal: movieNetflixOriginalReducer,
     moviesRow: moviesRowReducer,
     moviesRowRecommended: moviesRowRecommendedReducer,
-    movieTarget: movieTargetReducer
+    movieTarget: movieTargetReducer,
+    moviesTopRated: moviesRowTopRatedReducer,
+    moviesComedy: moviesRowComedyReducer,
+    moviesDocumentaries: moviesRowDocumentariesReducer
+
   })
   // auth: combineReducers({})
 

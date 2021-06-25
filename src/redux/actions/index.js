@@ -1,9 +1,9 @@
 import {movieAPI} from "../../api/api";
 import {
   FETCH_MOVIE_TARGET,
-  FETCH_NETFLIX_ORIGINALS,
+  FETCH_NETFLIX_ORIGINALS, FETCH_ROW_COMEDY, FETCH_ROW_DOCUMENTARIES,
   FETCH_ROW_MOVIES,
-  FETCH_ROW_MOVIES_RECOMMENDED
+  FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED
 } from "./actionsType";
 
 export function getMovieNetflixOriginals(){
@@ -11,6 +11,42 @@ export function getMovieNetflixOriginals(){
     movieAPI.getNetflixMovieOriginalsMovie().then( response => {
       if(response.status === 200)
         dispatch({type: FETCH_NETFLIX_ORIGINALS, payload: response.data.results});
+    })
+  }
+}
+
+export function getMovieRowNetflixOriginals(){
+  return (dispatch) => {
+    movieAPI.getNetflixMovieOriginalsMovie().then( response => {
+      if(response.status === 200)
+        dispatch({type: FETCH_ROW_NETFLIX_ORIGINALS, payload: response.data.results});
+    })
+  }
+}
+
+export function fetchTopRated() {
+  return (dispatch) => {
+    movieAPI.getTopRated().then( response => {
+      if(response.status === 200)
+        dispatch({type: FETCH_ROW_TOP_RATED, payload: response.data.results});
+    })
+  }
+}
+
+export function fetchComedy() {
+  return (dispatch) => {
+    movieAPI.getComedy().then( response => {
+      if(response.status === 200)
+        dispatch({type: FETCH_ROW_COMEDY, payload: response.data.results});
+    })
+  }
+}
+
+export function fetchDocumentaries() {
+  return (dispatch) => {
+    movieAPI.getDocumentaries().then( response => {
+      if(response.status === 200)
+        dispatch({type: FETCH_ROW_DOCUMENTARIES, payload: response.data.results});
     })
   }
 }

@@ -1,42 +1,66 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+// import {useParams} from "react-router-dom";
 import {Container, Poster, Posters, Title, Wrapper} from "./style";
-import {getMoviesRow, getMoviesRowRecommended} from "../../redux/actions";
-import {useDispatch} from "react-redux";
-import store from "../../redux/redux-store";
+// import {getMoviesRow, getMoviesRowRecommended} from "../../redux/actions";
+import { useSelector} from "react-redux";
+// import store from "../../redux/redux-store";
 
-function Row({title, fetchURL, isLargeRow}) {
-  const {id} = useParams();
-  const dispatch = useDispatch();
+function Row({title, isLargeRow, keyRow}) {
+  // const {id} = useParams();
+  // const dispatch = useDispatch();
   // let moviesR = useSelector(store => store.moviesRow.data);
   // let moviesRR = useSelector(store => store.moviesRowRecommended.data)
-  const state = store.getState()
-  const [movies, setMovies] = useState(state.movies.moviesRow.data)
+  const netflix = useSelector(store => store.movies.movieNetflixOriginal.dataRow)
+  const topRated = useSelector(store => store.movies.moviesTopRated.data)
+  const comedy = useSelector(store => store.movies.moviesComedy.data)
+  const documentaries = useSelector(store => store.movies.moviesDocumentaries.data)
+  // const state = store.getState()
+  const [movies, setMovies] = useState()
   // const movies = []
 
 
   useEffect(() => {
-    async function fetchData() {
-      await dispatch(getMoviesRow(fetchURL));
-      id && await dispatch(getMoviesRowRecommended(id))
-      if (!id) {
-        await setMovies(state.movies.moviesRow.data)
-        // console.log(movies)
-        // debugger
-      } else {
-        if (title === `You May Also Like`) {
-          setTimeout(() => {
-            setMovies(state.movies.moviesRowRecommended.data)
-          }, 700)
-          // debugger
-          console.log(movies)
-        }
-      }
+    if(keyRow === `Netflix`){
+      setMovies(netflix)
     }
+    if(keyRow === `Top`){
+      setMovies(topRated)
+    }
+    if(keyRow === `Comedy`){
+      setMovies(comedy)
+    }
+    if(keyRow === `Documentaries`){
+      setMovies(documentaries)
+    }
+    // console.log(movies)
+  }, [keyRow, netflix, topRated, comedy, documentaries]);
 
-    fetchData()
 
-  }, [fetchURL, id, dispatch, movies, state.movies.moviesRow.data, state.movies.moviesRowRecommended.data, title])
+
+  // useEffect(() => {
+  //   id ?  dispatch(getMoviesRowRecommended(id)) :  dispatch(getMoviesRow(fetchURL));
+  // }, [dispatch, id, fetchURL])
+  //
+  //
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (!id) {
+  //       await setMovies(state.movies.moviesRow.data)
+  //       // console.log(movies)
+  //       // debugger
+  //     } else {
+  //       if (title === `You May Also Like`) {
+  //         setTimeout(() => {
+  //           setMovies(state.movies.moviesRowRecommended.data)
+  //         }, 700)
+  //         // debugger
+  //       }
+  //     }
+  //   }
+  //
+  //   fetchData()
+  //   // console.log(movies)
+  // }, [fetchURL, id, title, state.movies.moviesRowRecommended.data, state.movies.moviesRow.data])
 
   // useEffect(() => {
   //   if (!id) {
