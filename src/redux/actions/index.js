@@ -3,7 +3,7 @@ import {
   FETCH_MOVIE_TARGET,
   FETCH_NETFLIX_ORIGINALS, FETCH_ROW_COMEDY, FETCH_ROW_DOCUMENTARIES,
   FETCH_ROW_MOVIES,
-  FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED
+  FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, REMOVE_DATA
 } from "./actionsType";
 
 export function getMovieNetflixOriginals(){
@@ -75,5 +75,11 @@ export function getMovieTarget(id) {
       if(response.status === 200)
         dispatch({type: FETCH_MOVIE_TARGET, payload: response.data});
     })
+  }
+}
+
+export function DeleteData() {
+  return {
+    type: REMOVE_DATA
   }
 }

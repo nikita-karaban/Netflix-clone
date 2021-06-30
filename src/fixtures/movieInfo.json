@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Netflix Originals",
+    "key": "Netflix",
+    "isLargeRow": true
+  },
+  {
+    "title": "Top Rated",
+    "key": "Top",
+    "isLargeRow": false
+  },
+  {
+    "title": "Comedy Movies",
+    "key": "Comedy",
+    "isLargeRow": false
+  },
+  {
+    "title": "Documentaries",
+    "key": "Documentaries",
+    "isLargeRow": false
+  }
+]

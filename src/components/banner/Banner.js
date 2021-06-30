@@ -3,12 +3,13 @@ import axios from "../../api/api";
 import {fetchMovieTrailer} from "../../Requests";
 import ModalVideo from 'react-modal-video';
 import {Button, Container, Contents, Description, ModalVideoWrapper, Title} from "./style";
+import {useSelector} from "react-redux";
 
-function Banner({movie}) {
+function Banner() {
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
   }
-
+  const movie = useSelector(store => store.movies.movieNetflixOriginal.data);
 
   const [showText, setShowText] = useState(false);
   const [videoId, setVideoId] = useState('');
