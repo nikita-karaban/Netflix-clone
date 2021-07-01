@@ -4,8 +4,12 @@ import {Base, Error, Input, Submit} from "../Form/style";
 import {AuthForm} from "../index";
 import * as yup from "yup";
 import Form from "../Form/Form";
+import {fetchUserPost} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
 function SignUpForm(props) {
+  const dispatch = useDispatch();
+
   const validationSchema = yup.object().shape({
     email: yup.string().typeError(`Должно быть стокой`).email().required(`Please Enter your Email`),
     password: yup
@@ -29,6 +33,7 @@ function SignUpForm(props) {
         }} validateOnBlur
                 onSubmit={(values) => {
                   console.log(values)
+                  dispatch(fetchUserPost(values))
                 }}
                 validationSchema={validationSchema}>
           {({

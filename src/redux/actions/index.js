@@ -5,6 +5,9 @@ import {
   FETCH_ROW_MOVIES,
   FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, REMOVE_DATA
 } from "./actionsType";
+import Cookie from "js-cookie";
+import {authAxios} from "../../Axios";
+import axios from "axios";
 
 export function getMovieNetflixOriginals(){
   return (dispatch) => {
@@ -74,6 +77,20 @@ export function getMovieTarget(id) {
     movieAPI.getMovieTarget(id).then(response => {
       if(response.status === 200)
         dispatch({type: FETCH_MOVIE_TARGET, payload: response.data});
+    })
+  }
+}
+
+export const fetchUserPost = (user) => {
+  return (dispatch) => {
+    // axios.post("http://localhost:3005/register", user)
+    authAxios.post("/register", user)
+      .then((res) => {
+        console.log(res)
+        Cookie.set("accessToken", res.data.accessToken);
+        dispatch({type: "LOGIN_USER", payload: res.config.data});
+      }).catch((err) => {
+      console.log(err);
     })
   }
 }

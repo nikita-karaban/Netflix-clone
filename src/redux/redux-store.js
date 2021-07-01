@@ -7,6 +7,7 @@ import moviesRowRecommendedReducer from "./reducers/moviesRowRecommendedReducer"
 import moviesRowTopRatedReducer from "./reducers/moviesRowTopRatedReducer"
 import moviesRowComedyReducer from "./reducers/moviesRowComedyReducer"
 import moviesRowDocumentariesReducer from "./reducers/moviesRowDocumentariesReducer"
+import currentUser from "./reducers/currentUserReducer"
 
 let reducers = combineReducers({
   movies: combineReducers({
@@ -17,8 +18,10 @@ let reducers = combineReducers({
     moviesComedy: moviesRowComedyReducer,
     moviesDocumentaries: moviesRowDocumentariesReducer
 
+  }),
+  auth: combineReducers({
+    currentUser
   })
-  // auth: combineReducers({})
 
 })
 

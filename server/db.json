@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "email": "karaban-00@yandex.ru",
+      "password": "$2a$10$JSlxrtRLXjTq9stYoaVN6unVEIvpi/zr9Qqmp8Vbd8mMQ2jAAx0Xm",
+      "name": "nikita",
+      "id": 1
+    },
+    {
+      "email": "nikitaboy1567@gmail.com",
+      "password": "$2a$10$Ei9jPR56zw96izGUyr4n6uoRRyL4vDfk0qA3zZQTZpcszpjuXtYVC",
+      "name": "nikita",
+      "id": 2
+    },
+    {
+      "email": "s@qq.ru",
+      "password": "$2a$10$cBQ7Us51iSFVGHUv.0dFxuVhPsKiPZGH5NnLVRHCZlXlkLAglhLyS",
+      "name": "dominik",
+      "id": 3
+    },
+    {
+      "email": "s@q.ru",
+      "password": "$2a$10$GZDgcbFghJEw0Qf5sEci6ujTGCC1euMOuFYBHjY4wGZELJ7joC0PC",
+      "name": "ivanalllllllll",
+      "id": 4
+    }
+  ]
+}
