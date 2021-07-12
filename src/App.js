@@ -4,16 +4,11 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Home, SignIn, SignUp, MovieDetails, SearchPage} from "./views";
 import BrowseContainer from "./container/BrowseContainer";
 
-function App(props) {
-  // const dispatch = useDispatch();
-  // const movie = useSelector(store => store.movieNetflixOriginal.data);
-  //
-  // useEffect(async () => {
-  //   dispatch(getMovieNetflixOriginals());
-  // }, [])
 
+function App(props) {
 
   return (
+
     <BrowserRouter>
       <>
         <Switch>
@@ -23,7 +18,9 @@ function App(props) {
           <Route exact path={ROUTES.SIGN_IN}>
             <SignIn/>
           </Route>
-          <Route exact path={ROUTES.BROWSE} component={() => <BrowseContainer/>}/>
+          <Route exact path={ROUTES.BROWSE} >
+            <BrowseContainer/>
+          </Route>
           <Route exact path={ROUTES.SIGN_UP}>
             <SignUp/>
           </Route>

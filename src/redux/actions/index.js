@@ -3,11 +3,11 @@ import {
   FETCH_MOVIE_TARGET,
   FETCH_NETFLIX_ORIGINALS, FETCH_ROW_COMEDY, FETCH_ROW_DOCUMENTARIES,
   FETCH_ROW_MOVIES,
-  FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, REMOVE_DATA
+  FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, LOGIN_USER, LOGOUT_USER, REMOVE_DATA
 } from "./actionsType";
 import Cookie from "js-cookie";
 import {authAxios} from "../../Axios";
-import axios from "axios";
+
 
 export function getMovieNetflixOriginals(){
   return (dispatch) => {
@@ -81,16 +81,45 @@ export function getMovieTarget(id) {
   }
 }
 
-export const fetchUserPost = (user) => {
+export const fetchUserPost = (user, history) => {
   return (dispatch) => {
     // axios.post("http://localhost:3005/register", user)
     authAxios.post("/register", user)
       .then((res) => {
         console.log(res)
         Cookie.set("accessToken", res.data.accessToken);
-        dispatch({type: "LOGIN_USER", payload: res.config.data});
+        dispatch({type: LOGIN_USER, payload: res.config.data});
+        history.push("/browse")
       }).catch((err) => {
       console.log(err);
+    })
+  }
+}
+
+export const fetchUserLogin = (user, history) => {
+  return (dispatch) => {
+    authAxios.post("/login", user)
+      .then((res) => {
+        Cookie.set("accessToken", res.data.accessToken);
+        dispatch({type: LOGIN_USER, payload: res.config.data});
+        history.push("/browse")
+      }).catch((err) => {
+        console.log(err);
+    })
+  }
+}
+
+export const fetchIsAuth = (history) => {
+
+  return async (dispatch) => {
+    const tokenStr = Cookie.get("accessToken")
+    await authAxios.get("/auth", { headers: {"Authorization" : `Bearer ${tokenStr}`}}).then((res) => {
+    }).catch((err) => {
+      if(err.response.status === 401) {
+        history.push("/signin")
+        dispatch({type: LOGOUT_USER})
+        Cookie.remove("accessToken")
+      }
     })
   }
 }

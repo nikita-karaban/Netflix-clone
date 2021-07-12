@@ -8,10 +8,13 @@ import {Provider} from 'react-redux';
 import store from "./redux/redux-store";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <GlobalStyles/>
-    <App/>
-  </Provider>,
+  <>
+    <Provider store={store}>
+      <GlobalStyles/>
+      <App/>
+    </Provider>
+  </>
+  ,
   document.getElementById('root')
 );
 

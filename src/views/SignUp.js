@@ -1,20 +1,13 @@
 import React from "react";
-import {Footer, SignUpForm} from "../components";
-import * as ROUTES from "../constants/routes";
-import {ButtonLink} from "../components/ui/button";
-import HeaderLayout from "../components/Layout/HeaderLayout";
-import {Background} from "../components/Header/style";
+import { SignUpForm} from "../components";
+import {Background} from "../components/Header/style/style";
+import BaseLayout from "../components/Layout/BaseLayout";
 
 export default function SignUp() {
 
 
   return (
-    <>
-      <HeaderLayout>
-        <ButtonLink to={ROUTES.SIGN_IN}>
-          <p>Sign&nbsp;In</p>
-        </ButtonLink>
-      </HeaderLayout>
+    <BaseLayout>
       <main>
         <Background>
           <div className='Gradient'>
@@ -22,7 +15,6 @@ export default function SignUp() {
           </div>
         </Background>
       </main>
-      <Footer/>
-    </>
+    </BaseLayout>
   )
 }

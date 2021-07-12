@@ -1,43 +1,43 @@
 import React, {useEffect} from "react";
-import {Banner, Footer, Row} from "../components";
-import HeaderLayout from "../components/Layout/HeaderLayout";
-import {Avatar} from "../components/Header/style";
+import {Banner, Row} from "../components";
 import {
   fetchComedy,
-  fetchDocumentaries,
+  fetchDocumentaries, fetchIsAuth,
   fetchTopRated,
   getMovieRowNetflixOriginals
 } from "../redux/actions";
 import {useDispatch} from "react-redux";
 import movieInfo from "../fixtures/movieInfo.json"
+import BaseLayout from "../components/Layout/BaseLayout";
+import {useHistory} from "react-router-dom";
 
 
 export default function Browse({movie}) {
   const dispatch = useDispatch();
+  // const isLogged = useSelector()
+  const history = useHistory()
 
 
 
-  useEffect(() => {
+
+  useEffect( () => {
+    // dispatch(fetchIsAuth())
+    dispatch(fetchIsAuth(history))
     dispatch(getMovieRowNetflixOriginals())
     dispatch(fetchTopRated())
     dispatch(fetchComedy())
     dispatch(fetchDocumentaries())
   })
 
-  return (<>
-      <HeaderLayout>
-        <Avatar src={`https://yt3.ggpht.com/a/AATXAJzmsbkpHIglhRd-l90FxVLtOj2bjIlCNG6GWaVf=s900-c-k-c0xffffffff-no-rj-mo`} alt={'avatar'}/>
-      </HeaderLayout>
+  return (<BaseLayout>
       <main>
-        <Banner movie={movie}/>
+        <Banner />
         {movieInfo.map((item) => (
           <Row key={`${item.key}`} title={`${item.title}`}  keyRow={`${item.key}`} isLargeRow={`${item.isLargeRow}`}/>
           )
         )}
       </main>
-
-      <Footer/>
-    </>
+    </BaseLayout>
 
   )
 }

@@ -8,13 +8,12 @@ const router = jsonServer.router('server/db.json')
 
 app.use(cors())
 
-// const rules = auth.rewriter({
-//   // Permission rules
-//   // users: 600,
-//   messages: 640,
-//   '/browse': 600,
-// })
-// app.use(rules)
+const rules = auth.rewriter({
+  // Permission rules
+  // users: 600,
+  auth: 660
+})
+app.use(rules)
 app.db = router.db
 app.use(auth)
 

@@ -23,6 +23,25 @@
       "password": "$2a$10$GZDgcbFghJEw0Qf5sEci6ujTGCC1euMOuFYBHjY4wGZELJ7joC0PC",
       "name": "ivanalllllllll",
       "id": 4
+    },
+    {
+      "email": "karaban-00@yandex.c",
+      "password": "$2a$10$y.EqrIkQLDJof3KwdykZoObJTWDV3YSNMdZj1Wz2PoZyjjkjlOoba",
+      "name": "nikita",
+      "id": 5
+    },
+    {
+      "email": "nikitaboy1567@gmail.coem",
+      "password": "$2a$10$ZdIGiZ6HhhttkWeh0e2P0edFQ.lvWi1jXFxkzwgCJXaSnBHuCAvxG",
+      "name": "nikita",
+      "id": 6
+    },
+    {
+      "email": "k@n.com",
+      "password": "$2a$10$b7o4D42ENhSxG3rHwTc/xOcKLtmZdhBeAvEwFM6DGW5gl9rZAnccy",
+      "name": "nikita",
+      "id": 7
     }
-  ]
+  ],
+  "auth": []
 }

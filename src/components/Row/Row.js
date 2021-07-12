@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Poster, Posters, Title, Wrapper} from "./style";
-// import {getMoviesRow, getMoviesRowRecommended} from "../../redux/actions";
 import { useSelector} from "react-redux";
-// import store from "../../redux/redux-store";
+import MovieService from "../../model/services/moivieService";
 
 function Row({title, isLargeRow, keyRow}) {
-  // const dispatch = useDispatch();
-  // let moviesR = useSelector(store => store.moviesRow.data);
-  // let moviesRR = useSelector(store => store.moviesRowRecommended.data)
   const netflix = useSelector(store => store.movies.movieNetflixOriginal.dataRow)
   const topRated = useSelector(store => store.movies.moviesTopRated.data)
   const comedy = useSelector(store => store.movies.moviesComedy.data)
   const documentaries = useSelector(store => store.movies.moviesDocumentaries.data)
   const recommended = useSelector(store => store.movies.moviesRowRecommended.data)
   const [movies, setMovies] = useState()
+  const service = new MovieService()
+
+
+  // console.log(collection.getData())
+  // console.log(service.findAll(movies))
 
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function Row({title, isLargeRow, keyRow}) {
     <Container>
       <Title>{title}</Title>
       <Posters>
-        {movies?.map(movie => (
+        {service.findAll(movies)?.map(movie => (
           ((isLargeRow && movie.poster_path) ||
             (movie.backdrop_path)) && (
             <Wrapper to={`/browse/${movie.id}`} key={movie.id}>

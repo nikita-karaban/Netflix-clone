@@ -4,6 +4,7 @@ import {fetchMovieTrailer} from "../../Requests";
 import ModalVideo from 'react-modal-video';
 import {Button, Container, Contents, Description, ModalVideoWrapper, Title} from "./style";
 import {useSelector} from "react-redux";
+import MovieService from "../../model/services/moivieService";
 
 function Banner() {
   function truncate(string, n) {
@@ -15,6 +16,10 @@ function Banner() {
   const [videoId, setVideoId] = useState('');
   const [isOpen, setOpen] = useState(false)
 
+  const service = new MovieService().findId(movie)
+
+  console.log(service)
+
   async function getMovieInfo(movieInfo) {
     let res = await axios.get(fetchMovieTrailer(movieInfo))
     if(res.data.results.length > 0) {
@@ -25,28 +30,28 @@ function Banner() {
   }
 
   useEffect( () => {
-    getMovieInfo(movie?.id);
+    getMovieInfo(service?.id);
   }
 )
   return (
 
     <Container style={{
       backgroundSize: "cover",
-      backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie?.poster_path}")`,
+      backgroundImage: `url("https://image.tmdb.org/t/p/original/${service?.backdrop_path || service?.poster_path}")`,
       backgroundPosition: "center center"
     }}>
       <ModalVideoWrapper>
         <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={videoId} onClose={() => setOpen(false)} />
       </ModalVideoWrapper>
       <Contents>
-        <Title>{movie?.name || movie?.original_title}</Title>
+        <Title>{service?.name || service?.original_title}</Title>
         <div>
           <Button onClick={()=> setOpen(true)}>Play</Button>
           <Button>My List</Button>
         </div>
         <Description>
-          { showText ? movie.overview :
-            truncate(movie?.overview, 50)}
+          { showText ? service.overview :
+            truncate(service?.overview, 50)}
           <small  onClick={ (e) => {setShowText(!showText);
             e.preventDefault();
             e.target.style.display = 'none';

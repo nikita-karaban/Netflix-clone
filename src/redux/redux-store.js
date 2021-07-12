@@ -20,7 +20,7 @@ let reducers = combineReducers({
 
   }),
   auth: combineReducers({
-    currentUser
+    currentUser: currentUser
   })
 
 })

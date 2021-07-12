@@ -1,17 +1,10 @@
-import {Accordion, Feature, Footer, MainItems, OptForm} from "../components";
-import HeaderLayout from "../components/Layout/HeaderLayout";
-import * as ROUTES from "../constants/routes";
-import {ButtonLink} from "../components/ui/button";
-import {Background} from "../components/Header/style";
+import {Accordion, Feature, MainItems, OptForm} from "../components";
+import {Background} from "../components/Header/style/style";
+import BaseLayout from "../components/Layout/BaseLayout";
 
 function Home() {
   return (
-    <>
-      <HeaderLayout>
-        <ButtonLink to={ROUTES.SIGN_IN}>
-          <p>Sign&nbsp;In</p>
-        </ButtonLink>
-      </HeaderLayout>
+    <BaseLayout>
       <main>
         <Background>
           <div className='Gradient'>
@@ -23,8 +16,7 @@ function Home() {
         <MainItems/>
         <Accordion/>
       </main>
-      <Footer/>
-    </>
+    </BaseLayout>
   );
 }
 

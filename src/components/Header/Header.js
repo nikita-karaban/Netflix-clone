@@ -1,85 +1,34 @@
-import React  from 'react';
-import logo from '../../logo.svg';
-import {Avatar, Background, Container, Logo} from "./style";
-import {Link, Route} from "react-router-dom";
+import React from 'react';
 import * as ROUTES from "../../constants/routes";
-import { withRouter } from 'react-router-dom';
+// import {Avatar, Container, Logo} from "../Header/style";
+import {Link, Route} from "react-router-dom";
+import logo from "../../logo.svg";
+import './style/HeaderLayout.scss'
+import {ButtonLink} from "../ui/button";
+import {Avatar} from "./style/style";
 
+function Header() {
+  return (
 
-
-function Header({ children}) {
-  // const [userInput, setUserInput] = useState('');
-  // let history = useHistory();
-
-
-
-  // const onChange = async (event) => {
-  //   await setUserInput(event.target.value)
-  //   // console.log(userInput)
-  //   await makeAipCall(userInput)
-  // }
-  //
-  // let makeAipCall = async (searchItem) => {
-  //   if (typeof searchItem === 'undefined') return
-  //   console.log(searchItem)
-  //   const response = await axios.get(fetchSearchItem(searchItem));
-  //   const results = await response.data.results;
-  //   console.log(results)
-  //
-  //   history.push({
-  //     movieRows: await results,
-  //     pathname: '/search',
-  //     userInput:  searchItem
-  //
-  //   });
-  //   // console.log(history)
-  // }
-  //
-  //
-  // useEffect(() => {
-  //   makeAipCall(userInput);
-  // }, [userInput]);
-
-
-  return (<>
-
-      <Route exact path={[ROUTES.HOME, ROUTES.SIGN_UP, ROUTES.SIGN_IN]}>
-        <Background>
-          <div className='Gradient'>
-          </div>
-          <Container>
-            <Link to={ROUTES.HOME}>
-              <Logo src={logo} alt={'Netflix'}/>
-            </Link>
-            <Route exact path={[ROUTES.HOME, ROUTES.SIGN_UP]}>
-              {/*<ButtonLink to={ROUTES.SIGN_IN}>Sign In</ButtonLink>*/}
-            </Route>
-            <Route exact path={ROUTES.SIGN_IN}>
-              {/*<ButtonLink to={ROUTES.SIGN_UP}>Sign&nbsp;Up</ButtonLink>*/}
-            </Route>
-          </Container>
-          {children}
-        </Background>
+    <header className={`header`}>
+      <Link to={ROUTES.HOME}>
+        <img className={`Logo`} src={logo} alt={'Netflix'}/>
+      </Link>
+      <Route exact path={[ROUTES.SIGN_IN, ROUTES.HOME]} >
+        <ButtonLink to={ROUTES.SIGN_UP}>
+          <p>Sign&nbsp;Up</p>
+        </ButtonLink>
       </Route>
-      <Route exact path={[ROUTES.BROWSE, ROUTES.MOVIE_ID, ROUTES.SEARCH]} >
-        <Container position={`absolute`} style={{
-          width: `88%`
-        }} >
-          <Link to={ROUTES.HOME}>
-            <Logo src={logo} alt={'Netflix'}/>
-          </Link>
-          <Link>
-            <Avatar src={`https://yt3.ggpht.com/a/AATXAJzmsbkpHIglhRd-l90FxVLtOj2bjIlCNG6GWaVf=s900-c-k-c0xffffffff-no-rj-mo`} alt={'avatar'}/>
-          </Link>
-        </Container>
+      <Route exact path={ROUTES.SIGN_UP} >
+        <ButtonLink to={ROUTES.SIGN_IN}>
+          <p>Sign&nbsp;In</p>
+        </ButtonLink>
       </Route>
-    </>
-
+      <Route path={ROUTES.BROWSE}>
+        <Avatar src={`https://yt3.ggpht.com/a/AATXAJzmsbkpHIglhRd-l90FxVLtOj2bjIlCNG6GWaVf=s900-c-k-c0xffffffff-no-rj-mo`} alt={'avatar'}/>
+      </Route>
+    </header>
   );
 }
 
-export default withRouter(Header);
-
-
-
-
+export default Header;

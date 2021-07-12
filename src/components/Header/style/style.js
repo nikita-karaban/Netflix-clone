@@ -1,42 +1,5 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.div`
-  display: flex;
-  margin: 0 56px;
-  padding: 70px 45px 70px;
-  height: 100px;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1;
-  position: ${props => (props.position? props.position : `static`) };
-  //${props => props.widows? `width: ${props.width}`: null}
-  
-  
-  a
-  {
-    display: flex;
-  }
-  
-  
-  @media (max-width: 1000px)
-  {
-    margin: 0 30px;
-  }
-`;
-
-
-export const Logo = styled.img`
-  height: 36px;
-  width: 134px;
-  margin-right: 40px;
-  cursor: pointer;
-  object-fit: contain;
-  @media (min-width: 1449px)
-  {
-    height: 45px;
-    width: 167px;
-  }
-`;
 
 export const Avatar = styled.img`
   //margin-top: 55px;

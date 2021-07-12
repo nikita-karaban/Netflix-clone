@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
 import {Browse} from "../views";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getMovieNetflixOriginals} from "../redux/actions";
 
 function BrowseContainer(props) {
   const dispatch = useDispatch();
-  const movie = useSelector(store => store.movies.movieNetflixOriginal.data);
+  // const movie = useSelector(store => store.movies.movieNetflixOriginal.data);
+
+
 
 
   useEffect( () => {
@@ -17,7 +19,7 @@ function BrowseContainer(props) {
   }, [dispatch])
 
   return (
-    <Browse movie={movie}/>
+    <Browse />
   );
 }
 

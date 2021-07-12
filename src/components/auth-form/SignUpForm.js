@@ -6,9 +6,12 @@ import * as yup from "yup";
 import Form from "../Form/Form";
 import {fetchUserPost} from "../../redux/actions";
 import {useDispatch} from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function SignUpForm(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
+  // const [isAuth, setIsAuth] = useState(false)
 
   const validationSchema = yup.object().shape({
     email: yup.string().typeError(`Должно быть стокой`).email().required(`Please Enter your Email`),
@@ -24,6 +27,8 @@ function SignUpForm(props) {
 
   return (
 
+
+
     <Form>
       <AuthForm title={`Sign Up`}>
         <Formik initialValues={{
@@ -32,14 +37,15 @@ function SignUpForm(props) {
           password: ''
         }} validateOnBlur
                 onSubmit={(values) => {
-                  console.log(values)
-                  dispatch(fetchUserPost(values))
+                  dispatch(fetchUserPost(values, history))
                 }}
-                validationSchema={validationSchema}>
+                validationSchema={validationSchema}
+        >
+
           {({
               values, errors, touched, handleChange, handleBlur, handleSubmit, dirty, isValid
             }) => (
-            <Base>
+            <Base onSubmit={handleSubmit}>
               <Input
                 type={`text`}
                 name={`name`}
@@ -68,6 +74,7 @@ function SignUpForm(props) {
               />
               {touched.password && errors.password && <Error>{errors.password}</Error>}
               <Submit disabled={!isValid && !dirty}
+
                       onClick={handleSubmit}
                       type={`submit`}
               >Sign Up</Submit>

@@ -1,7 +1,6 @@
 export { default as MainItems } from './MainItems/MainItems';
 export { default as Accordion } from './Accordion/Accordion';
 export { default as Footer } from './Footer/Footer';
-export { default as Header } from './Header/Header';
 export { default as OptForm } from './opt-form/opt-form'
 export { default as Feature } from './Feature/Feature'
 export { default as Banner } from './banner/Banner'
@@ -10,3 +9,4 @@ export { default as SearchItems } from './SearchItems/SearchItems'
 export { default as AuthForm } from './auth-form/Auth-form'
 export { default as SignInForm } from './auth-form/SignInForm'
 export { default as SignUpForm } from './auth-form/SignUpForm'
+export { default as Header } from './Header/Header'
