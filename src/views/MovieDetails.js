@@ -3,7 +3,7 @@ import {Banner, Row} from "../components";
 
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {DeleteData, fetchIsAuth, getMoviesRowRecommended, getMovieTarget} from "../redux/actions";
+import {DeleteData, isAuth, getMoviesRowRecommended, getMovieTarget} from "../redux/actions";
 import BaseLayout from "../components/Layout/BaseLayout";
 import {useHistory} from "react-router-dom";
 
@@ -16,7 +16,7 @@ function MovieDetails(props) {
 
   useEffect( () => {
     async function fetchData() {
-      await dispatch(fetchIsAuth(history))
+      await dispatch(isAuth(history))
       await dispatch(getMovieTarget(id))
       await dispatch(getMoviesRowRecommended(id))
     }

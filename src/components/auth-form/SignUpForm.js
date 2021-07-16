@@ -4,7 +4,7 @@ import {Base, Error, Input, Submit} from "../Form/style";
 import {AuthForm} from "../index";
 import * as yup from "yup";
 import Form from "../Form/Form";
-import {fetchUserPost} from "../../redux/actions";
+import {userPost} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -37,7 +37,7 @@ function SignUpForm(props) {
           password: ''
         }} validateOnBlur
                 onSubmit={(values) => {
-                  dispatch(fetchUserPost(values, history))
+                  dispatch(userPost(values, history))
                 }}
                 validationSchema={validationSchema}
         >

@@ -1,4 +1,4 @@
-class MovieDetails {
+export default class MovieDetails {
 
   constructor(id, poster_path, backdrop_path, name, original_title, overview) {
     this.id = id;
@@ -8,7 +8,5 @@ class MovieDetails {
     this.original_title = original_title;
     this.overview = overview;
   }
-
 }
 
-module.exports = MovieDetails

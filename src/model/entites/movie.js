@@ -1,4 +1,4 @@
-class Movie {
+export default class Movie {
 
   constructor(id, poster_path, backdrop_path, name) {
     this.id = id;
@@ -8,4 +8,4 @@ class Movie {
   }
 }
 
-module.exports = Movie;
+// module.exports = Movie;

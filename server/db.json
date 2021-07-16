@@ -41,6 +41,12 @@
       "password": "$2a$10$b7o4D42ENhSxG3rHwTc/xOcKLtmZdhBeAvEwFM6DGW5gl9rZAnccy",
       "name": "nikita",
       "id": 7
+    },
+    {
+      "email": "q@q.q",
+      "password": "$2a$10$zcux4O3omVLH4u2SvmhP8efrzuvKhvqzEQjiiMXCdFXtEokW/7uCu",
+      "name": "nik",
+      "id": 8
     }
   ],
   "auth": []

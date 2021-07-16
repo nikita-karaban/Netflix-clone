@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import {Banner, Row} from "../components";
 import {
   fetchComedy,
-  fetchDocumentaries, fetchIsAuth,
-  fetchTopRated,
+  fetchDocumentaries, isAuth,
+  fetchTopRated, getMovieNetflixOriginals,
   getMovieRowNetflixOriginals
 } from "../redux/actions";
 import {useDispatch} from "react-redux";
@@ -14,15 +14,15 @@ import {useHistory} from "react-router-dom";
 
 export default function Browse({movie}) {
   const dispatch = useDispatch();
-  // const isLogged = useSelector()
   const history = useHistory()
 
 
 
 
   useEffect( () => {
-    // dispatch(fetchIsAuth())
-    dispatch(fetchIsAuth(history))
+
+    dispatch(isAuth(history))
+    dispatch(getMovieNetflixOriginals())
     dispatch(getMovieRowNetflixOriginals())
     dispatch(fetchTopRated())
     dispatch(fetchComedy())

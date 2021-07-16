@@ -6,14 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {GlobalStyles} from "./global-styles";
 import {Provider} from 'react-redux';
 import store from "./redux/redux-store";
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
-  <>
+  <BrowserRouter>
     <Provider store={store}>
       <GlobalStyles/>
       <App/>
     </Provider>
-  </>
+  </BrowserRouter>
   ,
   document.getElementById('root')
 );

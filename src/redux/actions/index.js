@@ -6,7 +6,7 @@ import {
   FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, LOGIN_USER, LOGOUT_USER, REMOVE_DATA
 } from "./actionsType";
 import Cookie from "js-cookie";
-import {authAxios} from "../../Axios";
+import {authAxios} from "../../api/Axios";
 
 
 export function getMovieNetflixOriginals(){
@@ -81,45 +81,36 @@ export function getMovieTarget(id) {
   }
 }
 
-export const fetchUserPost = (user, history) => {
+export const userPost = (user, history) => {
   return (dispatch) => {
-    // axios.post("http://localhost:3005/register", user)
     authAxios.post("/register", user)
       .then((res) => {
         console.log(res)
-        Cookie.set("accessToken", res.data.accessToken);
         dispatch({type: LOGIN_USER, payload: res.config.data});
-        history.push("/browse")
       }).catch((err) => {
       console.log(err);
     })
   }
 }
 
-export const fetchUserLogin = (user, history) => {
+export const userLogin = (user) => {
   return (dispatch) => {
     authAxios.post("/login", user)
       .then((res) => {
-        Cookie.set("accessToken", res.data.accessToken);
         dispatch({type: LOGIN_USER, payload: res.config.data});
-        history.push("/browse")
       }).catch((err) => {
-        console.log(err);
+      dispatch({type: LOGOUT_USER})
+      console.log(err);
     })
   }
 }
 
-export const fetchIsAuth = (history) => {
-
-  return async (dispatch) => {
+export const isAuth = () => {
+  return async () => {
     const tokenStr = Cookie.get("accessToken")
     await authAxios.get("/auth", { headers: {"Authorization" : `Bearer ${tokenStr}`}}).then((res) => {
     }).catch((err) => {
-      if(err.response.status === 401) {
-        history.push("/signin")
-        dispatch({type: LOGOUT_USER})
-        Cookie.remove("accessToken")
-      }
+      console.log(err)
     })
   }
 }

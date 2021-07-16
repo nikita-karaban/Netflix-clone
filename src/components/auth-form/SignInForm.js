@@ -4,13 +4,11 @@ import {Base, Error, Input, Submit} from "../Form/style";
 import {AuthForm} from "../index";
 import * as yup from "yup";
 import Form from "../Form/Form";
-import {fetchUserLogin} from "../../redux/actions";
+import {userLogin} from "../../redux/actions";
 import {useDispatch} from "react-redux";
-import { useHistory } from "react-router-dom";
 
 function SignInForm(props) {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const validationSchema = yup.object().shape({
     email: yup.string().typeError(`Должно быть стокой`).email().required(`Please Enter your Email`),
@@ -32,7 +30,7 @@ function SignInForm(props) {
           password: ''
         }} validateOnBlur
                 onSubmit={(values) => {
-                  dispatch(fetchUserLogin(values, history))
+                  dispatch(userLogin(values))
                 }}
                 validationSchema={validationSchema}>
           {({
