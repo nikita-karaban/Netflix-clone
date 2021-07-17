@@ -2,14 +2,20 @@ import './App.css';
 import * as ROUTES from './constants/routes';
 import {Route, Switch} from "react-router-dom";
 import {Home, SignIn, SignUp, MovieDetails, SearchPage, Browse} from "./views";
-import {InjectAxiosInterceptors} from "./components";
+import {useHistory} from "react-router-dom";
+// import {useSelector} from "react-redux";
+import {setupInterceptors} from "./api/Axios";
 
 
 function App(props) {
 
+  const history = useHistory()
+  // const store = useSelector((state) => state)
+  setupInterceptors(history)
+
+
   return (
     <>
-      <InjectAxiosInterceptors />
       <Switch>
         <Route exact path={ROUTES.HOME}>
           <Home/>

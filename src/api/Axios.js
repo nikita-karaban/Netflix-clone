@@ -11,13 +11,9 @@ export const authAxios = axios.create({
 })
 
 
-export const setupInterceptors = (history, store) => {
+export const setupInterceptors = (history) => {
   authAxios.interceptors.response.use(
     (res) => {
-      if((res.status === 200 || res.status === 201)&& res.config.method === "post") {
-        Cookie.set("accessToken", res.data.accessToken);
-        history.push("/browse")
-      }
       return res
     },
     (error) => {

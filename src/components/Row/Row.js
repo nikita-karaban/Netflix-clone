@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Poster, Posters, Title, Wrapper} from "./style";
 import { useSelector} from "react-redux";
-import Movie from "../../model/entites/movie";
 
 function Row({title, isLargeRow, keyRow}) {
   const netflix = useSelector(store => store.movies.movieNetflixOriginal.dataRow)
@@ -10,9 +9,6 @@ function Row({title, isLargeRow, keyRow}) {
   const documentaries = useSelector(store => store.movies.moviesDocumentaries.data)
   const recommended = useSelector(store => store.movies.moviesRowRecommended.data)
   const [movies, setMovies] = useState()
-
-  const moviesDataStructure = movies?.map(item => new Movie(item.id, item.poster_path, item.backdrop_path, item.title)
-  )
 
 
   useEffect(() => {
@@ -30,7 +26,6 @@ function Row({title, isLargeRow, keyRow}) {
     }
     if(keyRow === `recommended`) {
       setMovies(recommended)
-      console.log(recommended)
     }
   }, [keyRow, netflix, topRated, comedy, documentaries, recommended]);
 
@@ -40,7 +35,7 @@ function Row({title, isLargeRow, keyRow}) {
     <Container>
       <Title>{title}</Title>
       <Posters>
-        {moviesDataStructure?.map(movie => (
+        {movies?.map(movie => (
           ((isLargeRow && movie.poster_path) ||
             (movie.backdrop_path)) && (
             <Wrapper to={`/browse/${movie.id}`} key={movie.id}>

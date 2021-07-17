@@ -27,7 +27,7 @@ export default function Browse({movie}) {
     dispatch(fetchTopRated())
     dispatch(fetchComedy())
     dispatch(fetchDocumentaries())
-  })
+  }, [dispatch, history])
 
   return (<BaseLayout>
       <main>

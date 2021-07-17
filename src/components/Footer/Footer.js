@@ -7,27 +7,27 @@ export default function Footer(props) {
       <Title>Questions? Contact us.</Title>
       <Row>
         <Column>
-          <Link><span>FAQ</span></Link>
-          <Link><span>Investor Relations</span></Link>
-          <Link><span>Privacy</span></Link>
-          <Link><span>Speed Test</span></Link>
+          <Link className='disabled-link'><span>FAQ</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Investor Relations</span></Link>
+          <Link  className='disabled-link' to={'#'}><span>Privacy</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Speed Test</span></Link>
         </Column>
         <Column>
-          <Link><span>Help Center</span></Link>
-          <Link><span>Cookie Preferences</span>x</Link>
-          <Link><span>Cookie Preferences</span></Link>
-          <Link><span>Legal Notices</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Help Center</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Cookie Preferences</span>x</Link>
+          <Link className='disabled-link' to={'#'}><span>Cookie Preferences</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Legal Notices</span></Link>
         </Column>
         <Column>
-          <Link><span>Account</span></Link>
-          <Link><span>Ways to Watch</span></Link>
-          <Link><span>Corporate Information</span></Link>
-          <Link><span>Netflix Originals</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Account</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Ways to Watch</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Corporate Information</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Netflix Originals</span></Link>
         </Column>
         <Column>
-          <Link><span>Media Center</span></Link>
-          <Link><span>Terms of Use</span></Link>
-          <Link><span>Contact Us</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Media Center</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Terms of Use</span></Link>
+          <Link className='disabled-link' to={'#'}><span>Contact Us</span></Link>
         </Column>
       </Row>
       <Text><span>Netflix Belarus</span></Text>

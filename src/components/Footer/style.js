@@ -49,6 +49,10 @@ export const Link = styled.a`
   margin-bottom: 20px;
   font-size: 14px;
   text-decoration: none;
+
+  .disable-link {
+    pointer-events: none;
+  }
   
   
   span:hover {

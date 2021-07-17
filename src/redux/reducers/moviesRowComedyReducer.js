@@ -1,10 +1,11 @@
 import {FETCH_ROW_COMEDY} from "../actions/actionsType";
+import Movie from "../../model/movie";
 
 export default function foo(state = {}, action) {
   switch (action.type) {
     case FETCH_ROW_COMEDY:
-      const data = action.payload
-      return { ...state, data };
+
+      return { ...state, data: action.payload?.map(item => new Movie(item.id, item.poster_path, item.backdrop_path, item.title))};
     default:
       return state;
   }
