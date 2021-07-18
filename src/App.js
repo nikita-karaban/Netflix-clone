@@ -3,14 +3,13 @@ import * as ROUTES from './constants/routes';
 import {Route, Switch} from "react-router-dom";
 import {Home, SignIn, SignUp, MovieDetails, SearchPage, Browse} from "./views";
 import {useHistory} from "react-router-dom";
-// import {useSelector} from "react-redux";
 import {setupInterceptors} from "./api/Axios";
+import RequireAuth from "./components/HOC/RequireAuth";
 
 
 function App(props) {
 
   const history = useHistory()
-  // const store = useSelector((state) => state)
   setupInterceptors(history)
 
 
@@ -23,13 +22,11 @@ function App(props) {
         <Route exact path={ROUTES.SIGN_IN}>
           <SignIn/>
         </Route>
-        <Route exact path={ROUTES.BROWSE} >
-          <Browse/>
-        </Route>
+        <Route exact path={ROUTES.BROWSE}  component={RequireAuth(Browse)} />
         <Route exact path={ROUTES.SIGN_UP}>
           <SignUp/>
         </Route>
-        <Route path={ROUTES.MOVIE_ID} component={(props) => <MovieDetails {...props}/>}/>
+        <Route path={ROUTES.MOVIE_ID} component={RequireAuth(MovieDetails)} />
         <Route exact path={ROUTES.SEARCH} component={() => <SearchPage/>}/>
       </Switch>
     </>

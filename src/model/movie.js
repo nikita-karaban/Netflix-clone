@@ -8,4 +8,3 @@ export default class Movie {
   }
 }
 
-// module.exports = Movie;

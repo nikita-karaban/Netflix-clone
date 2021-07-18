@@ -17,7 +17,6 @@ function Banner() {
 
 
 
-  console.log(movie)
   async function getMovieInfo(movieInfo) {
     let res = await instance.get(fetchMovieTrailer(movieInfo))
     if(res.data.results.length > 0) {
@@ -32,7 +31,7 @@ function Banner() {
   }, []
 )
   return (
-
+//todo как исправить ошибку 404 https://image.tmdb.org/t/p/original/undefined
     <Container style={{
       backgroundSize: "cover",
       backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie?.poster_path}")`,
