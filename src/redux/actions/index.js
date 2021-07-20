@@ -4,8 +4,7 @@ import {
   FETCH_NETFLIX_ORIGINALS, FETCH_ROW_COMEDY, FETCH_ROW_DOCUMENTARIES,
   FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, LOGIN_USER, LOGOUT_USER, REMOVE_DATA
 } from "./actionsType";
-import Cookie from "js-cookie";
-import {authAxios} from "../../api/Axios";
+import {authAxios, isAuthAxios} from "../../api/Axios";
 
 
 export function getMovieNetflixOriginals(){
@@ -53,15 +52,6 @@ export function fetchDocumentaries() {
   }
 }
 
-// export function getMoviesRow(fetchURL){
-//   return (dispatch) => {
-//     movieAPI.getMovies(fetchURL).then( response => {
-//       if(response.status === 200)
-//         dispatch({type: FETCH_ROW_MOVIES, payload: response.data.results});
-//     })
-//   }
-// }
-
 export function getMoviesRowRecommended(id){
   return (dispatch) => {
     movieAPI.getRecommendedMovies(id).then( response => {
@@ -84,11 +74,9 @@ export const userPost = (user, history) => {
   return (dispatch) => {
     authAxios.post("/register", user)
       .then((res) => {
-        console.log(res)
-        Cookie.set("accessToken", res.data.accessToken);
-        dispatch({type: LOGIN_USER, payload: res.config.data});
         history.push("/browse")
       }).catch((err) => {
+      dispatch({type: LOGOUT_USER});
       console.log(err);
     })
   }
@@ -99,7 +87,6 @@ export const userLogin = (user, history) => {
     authAxios.post("/login", user)
       .then((res) => {
         dispatch({type: LOGIN_USER, payload: res.config.data});
-        Cookie.set("accessToken", res.data.accessToken);
         history.push("/browse")
       }).catch((err) => {
       dispatch({type: LOGOUT_USER})
@@ -110,8 +97,7 @@ export const userLogin = (user, history) => {
 
 export const isAuth = () => {
   return async () => {
-    const tokenStr = Cookie.get("accessToken")
-    await authAxios.get("/auth", { headers: {"Authorization" : `Bearer ${tokenStr}`}}).then((res) => {
+    await isAuthAxios.get().then((res) => {
     }).catch((err) => {
       console.log(err)
     })

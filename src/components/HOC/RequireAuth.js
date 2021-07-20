@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom";
 export default function RequireAuth(Component) {
   return function Guard({...props}) {
     const dispatch = useDispatch()
-    const hasToken = Cookie.get("accessToken")
+    const hasToken = localStorage.getItem("accessToken")
     const history = useHistory()
 
     useEffect(() => {

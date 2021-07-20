@@ -26,7 +26,7 @@ function App(props) {
         <Route exact path={ROUTES.SIGN_UP}>
           <SignUp/>
         </Route>
-        <Route path={ROUTES.MOVIE_ID} component={RequireAuth(MovieDetails)} />
+        <Route exact path={ROUTES.MOVIE_ID} component={RequireAuth(MovieDetails)} />
         <Route exact path={ROUTES.SEARCH} component={() => <SearchPage/>}/>
       </Switch>
     </>
