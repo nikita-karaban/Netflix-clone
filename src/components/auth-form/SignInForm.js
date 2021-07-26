@@ -33,7 +33,7 @@ function SignInForm(props) {
           email: '',
           password: ''
         }} validateOnBlur
-                onSubmit={(values) => {
+                onSubmit={ (values) => {
                   dispatch(userLogin(values, history))
                 }}
                 validationSchema={validationSchema}>

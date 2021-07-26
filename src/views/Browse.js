@@ -17,7 +17,7 @@ export default function Browse({movie}) {
 
 
 
-  useEffect( () => {
+  useEffect(  () => {
 
     dispatch(getMovieNetflixOriginals())
     dispatch(getMovieRowNetflixOriginals())

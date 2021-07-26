@@ -4,7 +4,7 @@ import {
   FETCH_NETFLIX_ORIGINALS, FETCH_ROW_COMEDY, FETCH_ROW_DOCUMENTARIES,
   FETCH_ROW_MOVIES_RECOMMENDED, FETCH_ROW_NETFLIX_ORIGINALS, FETCH_ROW_TOP_RATED, LOGIN_USER, LOGOUT_USER, REMOVE_DATA
 } from "./actionsType";
-import {authAxios, isAuthAxios} from "../../api/Axios";
+import {userAxios, authAxios} from "../../api/Axios";
 
 
 export function getMovieNetflixOriginals(){
@@ -72,7 +72,7 @@ export function getMovieTarget(id) {
 
 export const userPost = (user, history) => {
   return (dispatch) => {
-    authAxios.post("/register", user)
+    userAxios.post("/register", user)
       .then((res) => {
         history.push("/browse")
       }).catch((err) => {
@@ -84,7 +84,7 @@ export const userPost = (user, history) => {
 
 export const userLogin = (user, history) => {
   return (dispatch) => {
-    authAxios.post("/login", user)
+    userAxios.post("/login", user)
       .then((res) => {
         dispatch({type: LOGIN_USER, payload: res.config.data});
         history.push("/browse")
@@ -97,7 +97,7 @@ export const userLogin = (user, history) => {
 
 export const isAuth = () => {
   return async () => {
-    await isAuthAxios.get().then((res) => {
+    await authAxios.get().then((res) => {
     }).catch((err) => {
       console.log(err)
     })

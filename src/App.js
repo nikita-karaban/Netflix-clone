@@ -4,7 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import {Home, SignIn, SignUp, MovieDetails, SearchPage, Browse} from "./views";
 import {useHistory} from "react-router-dom";
 import {setupInterceptors} from "./api/Axios";
-import RequireAuth from "./components/HOC/RequireAuth";
+import RequireAuth from "./HOC/RequireAuth";
 
 
 function App(props) {

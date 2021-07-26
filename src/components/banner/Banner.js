@@ -31,7 +31,7 @@ function Banner() {
   }, []
 )
   return (
-//todo как исправить ошибку 404 https://image.tmdb.org/t/p/original/undefined
+//fixme как исправить ошибку 404 https://image.tmdb.org/t/p/original/undefined
     <Container style={{
       backgroundSize: "cover",
       backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie?.poster_path}")`,

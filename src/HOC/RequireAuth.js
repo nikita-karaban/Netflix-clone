@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
-import Cookie from "js-cookie";
 import {Redirect} from "react-router-dom"
 import {useDispatch} from "react-redux";
-import {isAuth} from "../../redux/actions";
+import {isAuth} from "../redux/actions";
 import {useHistory} from "react-router-dom";
 
 export default function RequireAuth(Component) {
@@ -11,7 +10,7 @@ export default function RequireAuth(Component) {
     const hasToken = localStorage.getItem("accessToken")
     const history = useHistory()
 
-    useEffect(() => {
+    useEffect( () => {
       dispatch(isAuth(history))
     }, []);
 
