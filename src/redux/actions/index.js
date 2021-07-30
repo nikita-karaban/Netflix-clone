@@ -74,6 +74,7 @@ export const userPost = (user, history) => {
   return (dispatch) => {
     userAxios.post("/register", user)
       .then((res) => {
+        localStorage.setItem("accessToken", res.data.accessToken);
         history.push("/browse")
       }).catch((err) => {
       dispatch({type: LOGOUT_USER});
@@ -86,6 +87,7 @@ export const userLogin = (user, history) => {
   return (dispatch) => {
     userAxios.post("/login", user)
       .then((res) => {
+        localStorage.setItem("accessToken", res.data.accessToken);
         dispatch({type: LOGIN_USER, payload: res.config.data});
         history.push("/browse")
       }).catch((err) => {
